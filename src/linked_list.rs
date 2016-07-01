@@ -82,10 +82,19 @@ fn it_can_count_the_amount_of_nodes() {
 }
 
 #[test]
-fn it_can_prepend_a_node() {
+fn it_can_prepend_a_node_on_a_fresh_list() {
     let mut new_list = LinkedList::new();
 
-    new_list.append(Some("wow1".to_string()));
+    new_list.prepend(Some("pre".to_string()));
+
+    assert_eq!(Some("pre".to_string()),
+               new_list.head.next_node.unwrap().data)
+}
+
+#[test]
+fn it_can_prepend_a_node_on_a_list_with_more_than_a_head() {
+    let mut new_list = LinkedList::new();
+
     new_list.prepend(Some("pre".to_string()));
 
     assert_eq!(Some("pre".to_string()),
