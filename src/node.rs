@@ -18,7 +18,6 @@ impl Node {
             None => self,
         }
     }
-    
 }
 
 #[test]
