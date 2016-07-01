@@ -15,7 +15,6 @@ impl LinkedList {
         let mut current_node = &self.head;
 
         while let Some(ref f) = current_node.next_node {
-            
             current_node = f;
             count += 1;
         }
@@ -59,4 +58,16 @@ fn it_can_append_data() {
     new_list.append(Some("wow".to_string()));
 
     assert_eq!(Some("wow".to_string()), new_list.tail().data)
+}
+
+#[test]
+fn it_can_count_the_amount_of_nodes() {
+    let mut new_list = LinkedList::new();
+
+    new_list.append(Some("wow1".to_string()));
+    new_list.append(Some("wow2".to_string()));
+    new_list.append(Some("wow3".to_string()));
+    new_list.append(Some("wow4".to_string()));
+
+    assert_eq!(4, new_list.count())
 }
