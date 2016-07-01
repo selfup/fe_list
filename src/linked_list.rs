@@ -37,7 +37,9 @@ impl LinkedList {
 
         let mut new_node = Node::new();
         new_node.data = data;
+
         self.head.next_node = Some(Box::new(new_node));
+        
         new_node.next_node = temp_list;
     }
 }
