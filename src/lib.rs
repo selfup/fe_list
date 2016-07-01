@@ -11,3 +11,11 @@ pub fn new_node() -> Node {
 pub fn new_list() -> LinkedList {
     LinkedList::new()
 }
+
+pub fn count_list(list: &mut LinkedList) -> usize {
+    list.count()
+}
+
+pub fn tail_list<'a>(list: &'a mut LinkedList) -> &'a mut Node {
+    list.tail()
+}
