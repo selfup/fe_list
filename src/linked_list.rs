@@ -31,6 +31,15 @@ impl LinkedList {
     pub fn tail(&mut self) -> &mut Node {
         self.head.tail()
     }
+
+    pub fn prepend(&mut self, data: Option<String>) {
+        let temp_list = self.head.next_node.take();
+
+        let mut new_node = Node::new();
+        new_node.data = data;
+        self.head.next_node = Some(Box::new(new_node));
+        new_node.next_node = temp_list;
+    }
 }
 
 #[test]
@@ -70,4 +79,15 @@ fn it_can_count_the_amount_of_nodes() {
     new_list.append(Some("wow4".to_string()));
 
     assert_eq!(4, new_list.count())
+}
+
+#[test]
+fn it_can_prepend_a_node() {
+    let mut new_list = LinkedList::new();
+
+    new_list.append(Some("wow1".to_string()));
+    new_list.prepend(Some("pre".to_string()));
+
+    assert_eq!(Some("pre".to_string()),
+               new_list.head.next_node.unwrap().data)
 }
