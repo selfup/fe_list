@@ -5,6 +5,8 @@ pub struct LinkedList {
     pub head: Node,
 }
 
+
+#[allow(dead_code)]
 impl LinkedList {
     pub fn new() -> LinkedList {
         LinkedList { head: Node::new() }
@@ -39,7 +41,7 @@ impl LinkedList {
         new_node.data = data;
 
         self.head.next_node = Some(Box::new(new_node));
-        
+
         new_node.next_node = temp_list;
     }
 }

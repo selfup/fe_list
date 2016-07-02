@@ -4,6 +4,7 @@ pub struct Node {
     pub next_node: Option<Box<Node>>,
 }
 
+#[allow(dead_code)]
 impl Node {
     pub fn new() -> Node {
         Node {
