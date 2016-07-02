@@ -5,7 +5,6 @@ pub struct LinkedList {
     pub head: Node,
 }
 
-
 #[allow(dead_code)]
 impl LinkedList {
     pub fn new() -> LinkedList {
@@ -36,13 +35,12 @@ impl LinkedList {
 
     pub fn prepend(&mut self, data: Option<String>) {
         let temp_list = self.head.next_node.take();
-
         let mut new_node = Node::new();
+
         new_node.data = data;
+        new_node.next_node = temp_list;
 
         self.head.next_node = Some(Box::new(new_node));
-
-        new_node.next_node = temp_list;
     }
 }
 
@@ -96,11 +94,14 @@ fn it_can_prepend_a_node_on_a_fresh_list() {
 }
 
 #[test]
-fn it_can_prepend_a_node_on_a_list_with_more_than_a_head() {
+fn it_can_prepend_a_node_on_a_list_with_more_than_one_node() {
     let mut new_list = LinkedList::new();
 
+    new_list.append(Some("wow1".to_string()));
+    new_list.append(Some("wow2".to_string()));
     new_list.prepend(Some("pre".to_string()));
 
+    assert_eq!(Some("wow2".to_string()), new_list.tail().data);
     assert_eq!(Some("pre".to_string()),
                new_list.head.next_node.unwrap().data)
 }
