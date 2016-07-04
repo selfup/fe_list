@@ -1,1 +1,1 @@
-
+# Simple LinkedList in Rust :)
