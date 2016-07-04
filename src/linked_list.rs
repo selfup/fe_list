@@ -26,6 +26,7 @@ impl LinkedList {
     pub fn append(&mut self, data: Option<String>) {
         let mut new_node = Node::new();
         new_node.data = data;
+    
         self.head.tail().next_node = Some(Box::new(new_node));
     }
 
